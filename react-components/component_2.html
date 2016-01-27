@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Component Developoment</title>
+    <script src="http://fb.me/react-0.12.2.min.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+
+</head>
+<body>
+
+<div id="react-container"></div>
+
+<script type="text/jsx">
+
+  var MyComponent=React.createClass({
+      render:function(){
+          return(
+                  <div>
+                      <h1>{this.props.text}</h1>
+                      <p>{this.props.children}</p>
+                  </div>
+          );
+      }
+  });
+
+    React.render(<div>
+                <MyComponent text="Hello React">
+                    I am Hello React paragraph
+                </MyComponent>
+                <MyComponent text="How are You?">
+                    I am How are You react paragraph
+                </MyComponent>
+                <MyComponent text="Good Bye">
+                    I am Good Bye react paragraph
+                </MyComponent>
+                 </div>
+            ,document.getElementById('react-container'));
+
+
+
+</script>
+
+</body>
+</html>
