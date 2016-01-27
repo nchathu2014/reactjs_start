@@ -1,0 +1,26 @@
+{
+  "name": "reactjs_start",
+  "homepage": "https://github.com/nchathu2014/reactjs_start",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "ReactJS"
+  ],
+  "authors": [
+    "T.D.N.Chathuranga"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.14.6",
+    "requirejs-react-jsx": "~1.0.2"
+  }
+}
