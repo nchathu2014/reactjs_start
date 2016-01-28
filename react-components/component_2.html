@@ -3,42 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>React Component Developoment</title>
-    <script src="http://fb.me/react-0.12.2.min.js"></script>
-    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+
+
+  <!--  jQuery-->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+   <!-- Bootstrap-->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <!--React-->
+    <script src="https://fb.me/react-0.13.3.min.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+
+    <!--Custom-->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
 <div id="react-container"></div>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+            123
+        </div>
+        <div class="col-lg-9">
+            <button class="btn btn-primary">klklkl</button>
+        </div>
+    </div>
+</div>
 <script type="text/jsx">
+    var Note = React.createClass({
+        render:function(){
+            return(
+                    <div className="noteClass">
 
-  var MyComponent=React.createClass({
-      render:function(){
-          return(
-                  <div>
-                      <h1>{this.props.text}</h1>
-                      <p>{this.props.children}</p>
-                  </div>
-          );
-      }
-  });
+                        <h1>Hi there</h1>
+                        <button class="btn btn-primary">klklkl</button>
 
-    React.render(<div>
-                <MyComponent text="Hello React">
-                    I am Hello React paragraph
-                </MyComponent>
-                <MyComponent text="How are You?">
-                    I am How are You react paragraph
-                </MyComponent>
-                <MyComponent text="Good Bye">
-                    I am Good Bye react paragraph
-                </MyComponent>
-                 </div>
-            ,document.getElementById('react-container'));
+                    </div>
+            );
+        }
+    });
 
-
-
+    React.render(<Note/>,document.getElementById('react-container'));
 </script>
 
 </body>
