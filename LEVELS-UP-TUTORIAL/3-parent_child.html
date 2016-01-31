@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parent Child Relationship</title>
+	<script src="build/react.min.js"></script>
+	<script src="build/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script type="text/babel">
+	var Parent = React.createClass({
+		
+		propTypes:{
+			user:React.PropTypes.bool
+		},
+
+		render:function(){
+			
+           var greet="Parent";
+           if(this.props.user==false){
+              greet="Child";
+           }
+           return(
+				<Child greet={greet}/>
+		   );     
+		}
+	});
+
+	var Child = React.createClass({
+		render:function(){
+			return(
+             <h1>I am a {this.props.greet}</h1>
+			);
+		}
+	});
+
+   ReactDOM.render(
+   	<Parent user={true}/>,
+   	document.getElementById('container')
+   );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+    <style type="text/css">
+    .green{
+        color:green;
+    }
+    .red{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+
+<div id="react-container"></div>
+<script type="text/babel">
+	var MyComponent = React.createClass({
+
+        getInitialState:function(){
+            return{
+                username:"Initial State"
+            }
+        },
+        getDefaultProps:function(){
+            return{
+                fullscreen:true
+            }
+        },
+    	render:function(){
+
+            this.setState({
+                username:"Nuwan"
+            });
+    		return(
+    			<div className={this.props.fullscreen?'green':'red'}>
+                    <h1>Welcome {this.state.username}</h1>
+                </div>
+    		);
+    	},
+        componentDidUpdate:function(){
+            this.setProps({
+                username:"wwwwwwwwwwwwww"
+            });
+        }
+    });
+    ReactDOM.render(
+        <div>
+            <MyComponent/>
+            <MyComponent fullscreen={false}/>
+        </div>,
+        document.getElementById('react-container')
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Component with Properties(props)</title>
+	<script src="build/react.min.js"></script>
+	<script src="build/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script type="text/babel">
+
+	var HelloWorld = React.createClass({
+
+		//set property type
+		propTypes:{
+			name:React.PropTypes.string.isRequired
+		},
+	
+		//set default propeties to the component before rendering(render())
+		getDefaultProps:function(){
+			return{
+				name:"DON"
+			}
+		},
+
+		render:function(){
+			return(
+				<h1>Hello {this.props.name}</h1>
+
+			);
+		}
+	});
+
+
+    ReactDOM.render(
+    	<div>
+    		<HelloWorld name="Nuwan"/>
+    		<HelloWorld name={true}/>  {/* default property effect to here*/}
+    		<HelloWorld name="Chathuranga"/>
+    	</div>,
+    	document.getElementById('container')
+    );
+
+</script>
+
+</body>
+</html>

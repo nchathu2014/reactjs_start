@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script type="text/jsx">
+
+    var MyComponent = React.createClass({
+
+        doSomething:function(){
+            alert("I am a alert");
+        },
+
+        render:function(){
+            return(
+                   <div>
+                       <h1>I am a Web Component</h1>
+                       <a onClick={this.doSomething}  href="#">Show</a>
+                   </div>
+            );
+        }
+    });
+
+    React.render(<MyComponent/>,document.getElementById('container'));
+
+</script>
+
+
+</body>
+</html>

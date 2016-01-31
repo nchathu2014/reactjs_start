@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ReactJS</title>
+	<script src="build/react.min.js"></script>
+	<script src="build/react-dom.min.js"></script>
+	<script src="js/babel-core-5.8.23.min.js"></script>
+</head>
+<body>
+
+<div id="container"></div>
+<script type="text/babel">
+	var HelloWorld = React.createClass({
+
+	    getInitialState:function(){
+	    	return{
+	    		value:1
+	    	}
+	    },
+	    componentDidMount:function(){ 	
+	    	this.setState({
+	    		value:this.state.value+20
+	    	});	    	
+	    },
+		render:function(){
+			return(
+				<div>
+					<h1>Hello World</h1>
+					<p>State : {this.state.value}</p>	
+				</div>
+			);
+		}
+	});
+	
+	ReactDOM.render(
+		<HelloWorld/>,
+		document.getElementById('container')
+	);
+</script>
+
+</body>
+</html>

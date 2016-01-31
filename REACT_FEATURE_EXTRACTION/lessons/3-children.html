@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+</head>
+<body>
+
+<div id="react-container"></div>
+<script type="text/babel">
+	var Parent = React.createClass({
+    	render:function(){
+    		return(
+                <div>
+                 {this.props.children}
+                </div>
+                
+    		);
+    	}
+    });
+
+    var Child = React.createClass({
+        render:function(){
+            return(  
+                  <div></div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Parent>
+            <p>I am a child of Parent</p>
+        </Parent>,
+        document.getElementById('react-container')
+    );
+</script>
+</body>
+</html>

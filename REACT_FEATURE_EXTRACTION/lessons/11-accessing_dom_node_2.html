@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+</head>
+<body>
+
+<!-- DOM accessing using ReactDOM.findDOMNode() -->
+
+<div id="react-container"></div>
+<script type="text/babel">
+	var MyComponent = React.createClass({
+
+        onFocus:function(){
+           var node = ReactDOM.findDOMNode(this);
+           console.log(node);
+        },
+    	render:function(){
+    		return(
+    			<div id="mainWrapper">
+                   <div>
+                         <input type="text" onFocus={this.onFocus}/>
+                   </div>
+                </div>
+    		);
+    	}
+    });
+    ReactDOM.render(
+        <MyComponent name="Nuwan"/>,
+        document.getElementById('react-container')
+    );
+</script>
+</body>
+</html>

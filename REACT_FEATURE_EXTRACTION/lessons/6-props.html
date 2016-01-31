@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+
+<div id="react-container"></div>
+<script type="text/babel">
+	var CommentList = React.createClass({
+    	render:function(){
+    		return(
+    			<div>
+                    <Comment author="Nuwan">Comment From author</Comment>   
+                    <Comment author="DON">Comment From *another* author</Comment>  
+                </div>
+    		);
+    	}
+    });
+
+var Comment = React.createClass({
+        //Protecting from XSS attack
+        rawMarkup: function() {
+            var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+            return { __html: rawMarkup };
+        }
+        render:function(){
+            return(
+                <div>
+                    <h2>{this.props.author}</h2>
+                    <span dangerouslySetInnerHTML={this.rawMarkup()} />
+                </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <CommentList />,
+        document.getElementById('react-container')
+    );
+</script>
+</body>
+</html>

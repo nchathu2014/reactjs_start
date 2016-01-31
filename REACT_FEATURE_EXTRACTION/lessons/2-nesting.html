@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Composition Example</title>
+    <script src="../build/react.min.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+</head>
+<body>
+
+<div id="react-container"></div>
+<script type="text/babel">
+
+	var Infor = React.createClass({
+    	render:function(){
+    		return(
+    			<div>
+                    <UserAvatar username={this.props.user}/>
+                    <UserProfile username={this.props.user}/>
+                </div>
+    		);
+    	}
+    });
+
+    //Use the facebook graph API -> https://graph.facebook.com/<name of the user>/picture'
+    var UserAvatar=React.createClass({
+        render:function(){
+            return(
+                <img src={"https://graph.facebook.com/"+this.props.username+"/picture"} alt={this.props.username}/>
+            );
+        }
+    });
+
+    //use https://facebook.com/<name of the user>
+    var UserProfile=React.createClass({
+        render:function(){
+            return(
+                <a href={"https://facebook.com/"+this.props.username}>{this.props.username}</a>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Infor user="Nuwan"/>,
+        document.getElementById('react-container')
+    );
+
+</script>
+</body>
+</html>

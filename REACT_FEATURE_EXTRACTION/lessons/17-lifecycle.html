@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.min.js"></script>
+    <script src="../js/babel-core-5.8.23.min.js"></script>
+</head>
+<body>
+
+<div id="react-container"></div>
+<script type="text/babel">
+	var MyComponent = React.createClass({
+
+        //call by once
+        getDefaultProps:function(){
+            return{
+                message1:"getDefaultProps()"
+            }
+        },
+        //call by once
+        getInitialState:function(){
+            return{
+                message2:"getInitialState()"
+            }
+        },
+        componentWillMount:function(){
+            //this state change no-call to a re-render
+            this.setState({
+                message2:"change state"
+            });
+        },
+    	render:function(){
+            //DONT DO DOM access here
+    		return(
+                <div>
+                    <p ref="para1">{this.props.message1}</p>
+                    <p>{this.state.message2}</p>
+                    <p>render()</p>
+                </div>
+                
+            );
+    	},
+        componentDidMount:function(){
+            //DOM access is do inside this NOT in render()
+            this.setState({
+                message2:"State Change"
+            });
+            this.setProps({
+                message1:"Props Change"
+            });
+            this.refs.para1.style.color='green';
+        },
+        //when a state change this will get fired
+        shouldComponentUpdate:function(nextProps,nextState){
+
+            console.log(nextState);
+            console.log(nextProps);
+            return true;
+        },
+        componentWillUpdate:function(nextProps, nextState){
+            // perform any preparations for an upcoming update
+        },
+        componentDidUpdate:function(nextProps, nextState){
+            console.log("did update : "+nextState);
+            console.log(nextProps);
+        },
+        componentWillReceiveProps:function(nextProps){
+            console.log(nextProps);
+        },
+        componentWillUnmount:function(){
+            /*This method can be beneficial when needing to perform clean up operations, f.e. removing any timers defined in componentDidMount.*/
+        }
+
+
+    });
+    ReactDOM.render(
+        <MyComponent/>,
+        document.getElementById('react-container')
+    );
+</script>
+</body>
+</html>
